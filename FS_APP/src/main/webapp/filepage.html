@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="filepage.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>File Storage</title>
+</head>
+<body>
+    <div class="content">
+        <div class="head">
+            <div class="home" id="homebtn"> <i class="fa-solid fa-house"></i></div>
+        <div class="heading">
+           </i><h2 id="title">FILE STORAGE</h2>
+        </div>
+        </div>
+        <div class="container" id="container"></div>
+        <div class="upload">
+			 <form method="post" action="FileUpload" enctype="multipart/form-data">
+			<input type="hidden" name="fileMode" id="fileModeInput" value="hello">
+			<div class="inputfile"><input type="file" name="file"/></div>
+        	<div class="submitbtn"><input type="submit" class="uploadfile"/></div>
+			 </form>
+        </div>
+    </div>
+<script src="filepage.js"></script>
+</body>
+</html>

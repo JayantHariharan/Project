@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>FS_APP</display-name>
+  <welcome-file-list>
+    <welcome-file>fstore.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FolderList</display-name>
+    <servlet-name>FolderList</servlet-name>
+    <servlet-class>FolderList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FolderList</servlet-name>
+    <url-pattern>/FolderList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DownloadFile</display-name>
+    <servlet-name>DownloadFile</servlet-name>
+    <servlet-class>DownloadFile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadFile</servlet-name>
+    <url-pattern>/DownloadFile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileUpload</display-name>
+    <servlet-name>FileUpload</servlet-name>
+    <servlet-class>FileUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUpload</servlet-name>
+    <url-pattern>/FileUpload</url-pattern>
+  </servlet-mapping>
+</web-app>

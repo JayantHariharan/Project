@@ -1,0 +1,123 @@
+body{
+    background-image: url(2779585.jpg);
+    background-position: center;
+    background-size: cover;
+    
+}
+.content{
+    width: 55%;
+    margin-top: 15vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+}
+.heading{
+	text-decoration: underline;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    letter-spacing: 6px;
+    font-weight: bolder;
+    font-style: italic;
+}
+.home{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: black;
+
+}
+i{
+    cursor: pointer;
+    margin-top:12px;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: 30px;
+}
+.upload{
+    align-items: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.submitbtn{
+    background-color: rgb(28, 185, 224);
+    color: whitesmoke;
+    padding: 10px;
+    border-radius: 7px;
+    margin: 10px;
+    margin-bottom: -10px;
+}
+.container {
+	overflow-y: auto;
+	height:500px;
+	background-color:aliceblue;
+	padding: 34px;
+	border-radius: 9px;
+	margin-left: auto;
+	margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#container div {
+	width: 100%;
+	margin: 10px;
+    padding: 10px;
+    border: 2px solid darkgrey;
+    box-shadow: 5px 10px black;
+    border-radius: 10px;
+    text-decoration: none;
+    color: rgb(14, 127, 233);
+    font-weight: bold;
+}
+.container a{
+	text-decoration: none;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-size: 23px;
+	
+}
+.submitbtn:hover{
+	background-color:blue;
+}
+.container div:hover {
+	background-color:yellow;
+}
+.uploadfile{
+    border: none;
+    color: white;
+    background-color: inherit;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .content {
+		width: auto;
+        margin-top: 10vh;
+            }
+
+    .container {
+     
+        max-height: 60vh;
+        padding: 10px; 
+    }
+
+    .container div {
+        width: fit-content;
+        margin: 1px auto;
+        box-sizing: border-box; 
+    }
+
+    
+}
