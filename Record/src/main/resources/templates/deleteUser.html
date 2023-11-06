@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Delete Employee</title>
+<style type="text/css">
+body{
+    margin:0;
+    padding:0;
+}
+.content{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    padding: 10px;
+    background-color: aqua;
+    width: 300px;
+    height: 200px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+input{
+	text-transform: uppercase;
+    width: 88%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    height:50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    letter-spacing: 1px;
+}
+
+h2{
+	text-transform:uppercase;
+    color: red;
+    animation: blinker 1s linear infinite;
+}
+#delete:hover{
+    background-color: deepskyblue;
+    cursor: pointer;
+    color: azure;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+  .navbar {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+</style>
+</head>
+<body>
+	<div class="navbar">
+  <a href="searchUser">Search</a>
+  <a href="newUser">Add</a>
+  <a href="updateUser">Update</a>
+  <a href="employees">Records</a>
+  <a href="deleteUser">Delete</a>
+</div>
+	  <div class="content">
+        <div class="row">
+        <form action="/deleteEmployee" class="row1">
+        <input type="number" name="id" placeholder="Enter the Employee ID">
+        <input type="submit" value="delete" id="delete" onclick="showDeletedRecord()">
+        </form>
+        </div>
+        <div class="row" id="deletedRecord">
+            <h2 th:text="${employee}"></h2>
+        </div>
+    </div>
+
+</body>
+</html>

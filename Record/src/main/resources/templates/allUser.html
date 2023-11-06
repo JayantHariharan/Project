@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Employees Record</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            text-transform: uppercase;
+            background-color: aqua;
+            border-radius: 5px;
+            width: fit-content;
+            height: fit-content;
+            border: 3px solid black;
+            padding: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 15%;
+        }
+        th,td{
+            padding: 4px;
+            font-size: large;
+            border-radius: 4px;
+            opacity: 0.85;
+        }
+        tr{
+			background-color: azure;
+		}
+		th{
+			color: red;
+		}
+  .navbar {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+    </style>
+</head>
+<body>
+	<div class="navbar">
+  <a href="searchUser">Search</a>
+  <a href="newUser">Add</a>
+  <a href="updateUser">Update</a>
+  <a href="employees">Records</a>
+  <a href="deleteUser">Delete</a>
+</div>
+    <div class="content">
+    <table id=employeeTable>
+    <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            </tr>
+             <tr th:each="employee : ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.fname}"></td>
+        <td th:text="${employee.lname}"></td>
+        <td th:text="${employee.gender}"></td>
+        <td th:text="${employee.phone}"></td>
+    </tr>
+    </table>
+    </div>
+</body>
+</html>

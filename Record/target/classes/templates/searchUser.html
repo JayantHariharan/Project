@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Search Employee</title>
+<style type="text/css">
+body{
+    margin:0;
+    padding: 0;
+}
+.content{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: aqua;
+    width: 350px;
+    height: 350px;
+}
+input{
+	font-weight: bold;
+	font-size: large;
+	text-transform: uppercase;
+    text-align: center;
+    border-radius: 4px;
+    height: 36px;
+    font-size: 14px;
+    font-weight: 560;
+}
+.content .row{
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 15px;
+}
+.content .row1,.content .row2{
+    display: grid;
+    gap: 10px;
+}
+.content .row2 div{
+    background-color: beige;
+    text-transform:uppercase;
+    height: 50px;
+    border-radius: 6px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+#search:hover{
+    cursor: pointer;
+    background-color: cornflowerblue;
+    color: azure;
+}
+  .navbar {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+   text-transform: uppercase;
+    font-weight: bold;
+  }
+
+
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+</style>
+</head>
+<body>
+	<div class="navbar">
+  <a href="searchUser">Search</a>
+  <a href="newUser">Add</a>
+  <a href="updateUser">Update</a>
+  <a href="employees">Records</a>
+  <a href="deleteUser">Delete</a>
+</div>
+<form action="getEmployee">
+<div class="content">
+        <div class="row">
+        <div class="row1">
+        
+            <input type="number" name="id" placeholder="Enter Employee ID">
+            <input type="submit" value="search" id="search">
+        
+        </div>
+        <div class="row2" id="row2"> 
+       <div id="fname" th:text="${fname}"></div>
+    <div id="lname" th:text="${lname}"></div>
+    <div id="gender" th:text="${gender}"></div>
+    <div id="phone" th:text="${phone}"></div>
+        </div>
+        </div>
+    </div>
+        </form>
+</body>
+</html>
