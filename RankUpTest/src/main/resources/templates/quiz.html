@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: yellowgreen;
+        }
+
+        .category-box {
+            color: white;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 15px;
+            background-color: rgb(31, 27, 27);
+            border-radius: 6px;
+            padding: 20px;
+            width: 70%;
+            letter-spacing: 0.5px;
+            border: 5px double white;
+        }
+
+        h2 {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-decoration: underline;
+        }
+
+        input {
+            font-size: medium;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h3 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: large;
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        button, .sbtn {
+            margin-left: 44.80%; 
+            text-align: center;
+            width: 180px;
+            height: 50px;
+            border-radius: 6px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .sbtn {
+            margin-left: auto;
+        }
+
+        .showbtn:hover, .sbtn:hover {
+            cursor: pointer;
+            background-color: cornflowerblue;
+            color: azure;
+        }
+
+        #submitbtn {
+            margin-top: 15px;
+            text-align: center;
+        }
+     .btn-container {
+		 display: none;
+        text-align: center;
+        width: 100%; /* Set the width to 100% to take the full width of the container */
+    }
+
+    .btn-container a {
+        display: inline-block;
+        width: 180px;
+        height: 50px;
+        border-radius: 6px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+        background-color: cornflowerblue;
+        color: azure;
+        text-decoration: none;
+        line-height: 50px; /* Align text vertically in the middle */
+    }
+    </style>
+    <title>Quiz</title>
+</head>
+
+<body>
+	<div class="content">
+    <form id="quizForm">
+
+        <div th:each="category, categoryIndex : ${categories}">
+            <div class="category-box">
+                <h2 th:text="${category.title}" class="category-title"></h2>
+                <button class="showbtn" th:onclick="'toggleQuestions(\'' + ${categoryIndex.index} + '\')'" type="button">Show
+                    Questions</button>
+
+                <div th:id="'questions-' + ${categoryIndex.index}" class="questions-container" style="display: none;">
+                    <div th:each="question, questionIndex : ${category.questions}">
+                        <h3 th:text="${question.question}"></h3>
+
+                        <div th:each="option, optionIndex : ${question.options}">
+                            <input type="radio"
+                                th:name="'question-' + ${categoryIndex.index} + '-' + ${questionIndex.index}"
+                                th:value="${option}" /> <span th:text="${option}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div id="submitbtn">
+            <button type="button" class="sbtn" onclick="submitQuiz()">Submit Quiz</button>
+        </div>
+        <br>
+          <div class="btn-container" id="viewResultBtn">
+                <a th:href="@{/usercertificate}" class="sbtn">VIEW RESULT</a>
+            </div>
+    </form>
+
+</div>
+    <script th:inline="javascript">
+		function viewResult() {
+    window.location.href = '/certificate';
+}
+
+        var categoriesData = /*[[${categories}]]*/ [];
+        console.log('Categories Data:', categoriesData);
+
+        function toggleQuestions(categoryIndex) {
+            var container = document.getElementById('questions-' + categoryIndex);
+            if (container) {
+                container.style.display = (container.style.display === 'none' || container.style.display === '') ? 'block' : 'none';
+            } else {
+                console.error('Element with ID "questions-' + categoryIndex + '" not found.');
+            }
+        }
+
+        async function submitQuiz() {
+			  document.getElementById('viewResultBtn').style.display = 'block';
+            var formData = [];
+
+            /*<![CDATA[*/
+            for (var i = 0; i < categoriesData.length; i++) {
+                var questions = categoriesData[i].questions;
+
+                for (var j = 0; j < questions.length; j++) {
+                    var selectedOption = document.querySelector(
+                        'input[name="question-' + i + '-' + j + '"]:checked');
+
+                    if (selectedOption) {
+                        formData.push({
+                            id: questions[j].id,
+                            userAnswer: selectedOption.value,
+                        });
+                    } else {
+                        alert('Please answer all questions before submitting.');
+                        return false;
+                    }
+                }
+            }
+            /*]]>*/
+
+            console.log('Collected Responses:', formData);
+            try {
+                const response = await fetch('/rankuptest/student/getquiz', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (response.ok) {
+                    console.log('Form submitted successfully!');
+                } else {
+                    console.error('Failed to submit form. Server returned:', await response.text());
+                }
+            } catch (error) {
+                console.error('Error during form submission:', error);
+            }
+
+            // Prevent the default form submission
+            return false;
+        }
+    </script>
+</body>
+
+</html>

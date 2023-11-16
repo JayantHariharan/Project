@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>RankUpTest</title>
+ <style>
+		body{
+    margin: 0;
+    padding: 0;
+}
+.content{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    background-color: rgb(170, 230, 51);
+    border-radius: 6px;
+    padding: 20px;
+    width: fit-content;
+    display: grid;
+    grid-row-gap: 10px;
+    letter-spacing: 0.5px;
+    border: 5px double black;
+}
+
+h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+}
+button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    width: 70%;
+    height: 60px;
+    border-radius: 6px;
+    margin-left: 81px;
+}
+.btn:hover{
+    background-color: yellow;
+    cursor: pointer;
+}
+		
+	</style>
+</head>
+<body>
+  <div class="content">
+        <h1>Welcome to RankUpTest Login Page</h1>
+        <a th:href="@{/login/admin-login}"><button class="btn">ADMIN</button></a>
+    	<a th:href="@{/login/student-login}"><button class="btn">STUDENT</button></a>
+    </div>
+</body>
+</html>

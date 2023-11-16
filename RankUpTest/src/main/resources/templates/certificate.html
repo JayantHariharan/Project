@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Certificate</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            text-align: center;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            width: 80%;
+        }
+
+        h1 {
+            color: #4285f4;
+        }
+
+        h2 {
+            color: #4caf50;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Rank Up Test</h1>
+        <h1>Certificate of Achievement</h1>
+        <p>This is to certify that</p>
+        <h2 th:text="${userName}">User</h2>
+        <p>has successfully completed the quiz with a score of</p>
+        <h2 th:text="${userScore}">0</h2>
+        <p>Great job!</p>
+    </div>
+</body>
+</html>
